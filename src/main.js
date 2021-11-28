@@ -13,6 +13,7 @@ import 'vue-awesome/icons/chart-pie.js';
 import 'vue-awesome/icons/chart-line.js';
 import 'vue-awesome/icons/align-left.js';
 
+
 //引入echart
 //4.x 引用方式
 import echarts from 'echarts'
