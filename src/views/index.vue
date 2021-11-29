@@ -1,109 +1,82 @@
 <template>
   <div id="index" ref="appRef">
-    <div class="bg">
-      <dv-loading v-if="loading">Loading...</dv-loading>
-      <div v-else class="host-body">
+    <dv-loading v-if="loading">Loading...</dv-loading>
+    <div v-else class="host-body">
+      <!-- 第一行 -->
+      <div class="px-1">
         <div class="d-flex jc-center">
           <dv-decoration-10 class="dv-dec-10" />
           <div class="d-flex jc-center">
             <dv-decoration-8 class="dv-dec-8" :color="['#568aea', '#000000']" />
             <div class="title">
-              <span class="title-text">大数据可视化平台</span>
-              <dv-decoration-6
-                class="dv-dec-6"
-                :reverse="true"
-                :color="['#50e3c2', '#67a1e5']"
-              />
+              <span class="title-text">全球海盗事件数据可视化分析系统</span>
+              <dv-decoration-6 class="dv-dec-6" :reverse="true" :color="['#50e3c2', '#67a1e5']" />
             </div>
-            <dv-decoration-8
-              class="dv-dec-8"
-              :reverse="true"
-              :color="['#568aea', '#000000']"
-            />
+            <dv-decoration-8 class="dv-dec-8" :reverse="true" :color="['#568aea', '#000000']" />
           </div>
           <dv-decoration-10 class="dv-dec-10-s" />
         </div>
+      </div>
 
-        <!-- 第二行 -->
-        <div class="d-flex jc-between px-2">
-          <div class="d-flex aside-width">
-            <div class="react-left ml-4 react-l-s">
-              <span class="react-before"></span>
-              <span class="text">数据分析1</span>
-            </div>
-            <div class="react-right ml-3">
-              <span class="text">数据分析2</span>
-            </div>
+      <!-- 第二行 -->
+      <div class="d-flex jc-between px-2">
+        <div class="d-flex aside-width">
+          <div class="react-left ml-4 react-l-s">
+            <span class="react-before"></span>
+            <span class="text">
+              确认地区
+              <a-select default-value="xxxx"
+                style="weight:260px,background:#03060D;margin-left:20px">
+                <a-select-option value="jack">
+                  全球各地
+                </a-select-option>
+                <a-select-option value="xxxx">
+                  xxxx
+                </a-select-option>
+                <a-select-option value="xxxx">
+                  xxxx
+                </a-select-option>
+              </a-select>
+            </span>
           </div>
-          <div class="d-flex aside-width">
-            <div class="react-right bg-color-blue mr-3">
-              <span class="text fw-b">vue-big-screen</span>
-            </div>
-            <div class="react-right mr-4 react-l-s">
-              <span class="react-after"></span>
-              <span class="text"
-                >{{ dateYear }} {{ dateWeek }} {{ dateDay }}</span
-              >
-            </div>
+          <div class="react-right ml-3 ">
+            <span class="text">
+              选择年限
+              <a-select default-value="2021"
+                style="weight:260px,background:#03060D;margin-left:20px">
+                <a-select-option value="jack">
+                  2020
+                </a-select-option>
+                <a-select-option value="xxxx">
+                  2019
+                </a-select-option>
+                <a-select-option value="xxxx">
+                  2018
+                </a-select-option>
+              </a-select>
+            </span>
           </div>
         </div>
-
-        <div class="body-box">
-          <!-- 第三行数据 -->
-          <div class="content-box">
-            <div>
-              <dv-border-box-12>
-                <centerLeft1 />
-              </dv-border-box-12>
-            </div>
-            <div>
-              <dv-border-box-12>
-                <centerLeft2 />
-              </dv-border-box-12>
-            </div>
-            <!-- 中间 -->
-            <div>
-              <center />
-            </div>
-            <!-- 中间 -->
-            <div>
-              <centerRight2 />
-            </div>
-            <div>
-              <dv-border-box-13>
-                <centerRight1 />
-              </dv-border-box-13>
-            </div>
+        <div class="d-flex aside-width">
+          <div class="react-right bg-color-blue mr-3">
+            <span class="text fw-b">当前时间</span>
           </div>
-
-          <!-- 第四行数据 -->
-          <div class="bototm-box">
-            <dv-border-box-13>
-              <bottomLeft />
-            </dv-border-box-13>
-            <dv-border-box-12>
-              <bottomRight />
-            </dv-border-box-12>
+          <div class="react-right mr-4 react-l-s">
+            <span class="react-after"></span>
+            <span class="text">{{ dateYear }} {{ dateWeek }} {{ dateDay }}</span>
           </div>
         </div>
       </div>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import drawMixin from "../utils/drawMixin";
+// import drawMixin from '../utils/drawMixin'
 import { formatTime } from '../utils/index.js'
-import centerLeft1 from './centerLeft1'
-import centerLeft2 from './centerLeft2'
-import centerRight1 from './centerRight1'
-import centerRight2 from './centerRight2'
-import center from './center'
-import bottomLeft from './bottomLeft'
-import bottomRight from './bottomRight'
-
 export default {
-  mixins: [ drawMixin ],
+  // mixins: [drawMixin],
   data() {
     return {
       timing: null,
@@ -111,23 +84,15 @@ export default {
       dateDay: null,
       dateYear: null,
       dateWeek: null,
-      weekday: ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+      weekday: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
     }
   },
-  components: {
-    centerLeft1,
-    centerLeft2,
-    centerRight1,
-    centerRight2,
-    center,
-    bottomLeft,
-    bottomRight
-  },
+
   mounted() {
     this.timeFn()
     this.cancelLoading()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     clearInterval(this.timing)
   },
   methods: {
@@ -142,11 +107,20 @@ export default {
       setTimeout(() => {
         this.loading = false
       }, 500)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 @import '../assets/scss/index.scss';
+.ant-select-selection {
+  background-color: rgba(26, 92, 215, 0.3);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+}
+.ant-select-arrow {
+  color: #fff;
+}
 </style>

@@ -1,0 +1,20 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+body{
+ background-repeat: no-repeat;
+ background-image: url('../pageBg.png');
+ background-size: cover;
+ color: #fff;
+}

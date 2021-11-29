@@ -4,8 +4,5 @@ const resolve = dir => {
 }
 module.exports = {
   publicPath: './',
-  chainWebpack: config => {
-    config.resolve.alias
-      .set('_c', resolve('src/components')) // key,value自行定义，比如.set('@@', resolve('src/components'))
-  },
+  lintOnSave: false
 }
