@@ -25,6 +25,7 @@ export default {
     var map = new AMap.Map('container', {
       zoom: 6,
     })
+    map.setMapStyle('amap://styles/darkblue')
 
     AMapUI.load(['ui/misc/PointSimplifier', 'lib/$'], (PointSimplifier) => {
       if (!PointSimplifier.supportCanvas) {

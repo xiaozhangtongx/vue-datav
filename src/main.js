@@ -6,6 +6,7 @@ import dataV from '@jiaminghi/data-view'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import './assets/scss/global.scss'
+import * as echarts from 'echarts'
 import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:5050'
 Vue.prototype.$http = axios
@@ -20,12 +21,6 @@ import 'vue-awesome/icons/chart-pie.js'
 import 'vue-awesome/icons/chart-line.js'
 import 'vue-awesome/icons/align-left.js'
 
-//引入echart
-//4.x 引用方式
-import echarts from 'echarts'
-//5.x 引用方式为按需引用
-//希望使用5.x版本的话,需要在package.json中更新版本号,并切换引用方式
-//import * as echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 

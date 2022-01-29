@@ -1,35 +1,48 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-29 17:05:48
- * @LastEditTime: 2021-11-29 23:43:39
+ * @LastEditTime: 2021-11-30 16:42:31
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \big-screen-vue-datav\src\views\Home.vue
 -->
 <template>
   <div class="show">
+    <!-- 上部分 -->
     <div class="box top">
-      <dv-border-box-12 class="show1">
+      <!-- 地图部分 -->
+      <dv-border-box-12>
         <div class="show2">
-          <Map class="dd" />
+          <Map />
         </div>
       </dv-border-box-12>
-      <dv-border-box-12 class="show1">
-      </dv-border-box-12>
-      <dv-border-box-12 class="show1">
+
+      <dv-border-box-12>
         <div class="show2">
-          <div class="dd"></div>
+          <AlltimeChart />
+        </div>
+      </dv-border-box-12>
+      <dv-border-box-12>
+        <div class="show2">
+          <AllyearChart />
         </div>
       </dv-border-box-12>
     </div>
+    <!-- 下部分 -->
     <div class="box bottom">
       <div class="bl">
-        <dv-border-box-9></dv-border-box-9>
-        <dv-border-box-9></dv-border-box-9>
+        <dv-border-box-12>
+          <div class="show2">
+            <AllereaChart />
+          </div>
+        </dv-border-box-12>
       </div>
       <div class="br">
-        <dv-border-box-9></dv-border-box-9>
-        <dv-border-box-9></dv-border-box-9>
+        <dv-border-box-12>
+          <div class="show2">
+            <dv-scroll-ranking-board :config="config" style="width:89%;height:95%" />
+          </div>
+        </dv-border-box-12>
       </div>
     </div>
   </div>
@@ -37,19 +50,58 @@
 
 <script>
 import Map from '@/views/Map'
+import AlltimeChart from '@/echarts/AlltimeChart'
+import AllyearChart from '@/echarts/AllyearChart'
+import AllereaChart from '@/echarts/AllereaChart'
 export default {
   name: '',
   data() {
-    return {}
+    return {
+      config: {
+        data: [
+          {
+            name: '法国',
+            value: 55,
+          },
+          {
+            name: '美国',
+            value: 120,
+          },
+          {
+            name: '日本',
+            value: 78,
+          },
+          {
+            name: '巴西',
+            value: 66,
+          },
+          {
+            name: '阿根廷',
+            value: 80,
+          },
+          {
+            name: '印度',
+            value: 45,
+          },
+          {
+            name: '俄罗斯',
+            value: 29,
+          },
+        ],
+      },
+    }
   },
   components: {
     Map,
+    AlltimeChart,
+    AllyearChart,
+    AllereaChart,
   },
   methods: {},
 }
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .show {
   display: flex;
   flex-direction: column;
@@ -71,18 +123,10 @@ export default {
     display: flex;
     justify-content: space-between;
     .bl {
-      width: 74%;
-      display: flex;
-      justify-content: space-between;
-      &:nth-child(1) {
-        margin-right: 3px;
-      }
+      width: 80%;
     }
     .br {
-      width: 25%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      width: 20%;
     }
   }
 }
@@ -93,10 +137,5 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  .dd {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-  }
 }
 </style>
